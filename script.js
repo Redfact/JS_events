@@ -67,23 +67,36 @@ function AddRemoveCDN(){
 
 }
 
-let leftbtn = document.querySelector("a.btn-secondary")
+let rightbtn = document.querySelector("a.btn-secondary")
 let cardparent = document.querySelector(".cards")
 
-console.log(leftbtn)
-function pushpop(){
+function rotatecards(){
     let length= cardparent.childNodes.length
     let first = cardparent.childNodes[1];
     let last = cardparent.childNodes[length-2];
     cardparent.insertBefore(last,first)
-    last=undefined
-    //console.log(list.childNodes)
+    console.log(length)
 }
+
+
+
+let leftbtn = document.querySelector("a.btn-primary")
+console.log(leftbtn)
+function rotatecardsinvrs(){
+    let length= cardparent.childNodes.length
+    let first = cardparent.childNodes[1];
+    let last = cardparent.childNodes[length-2];
+    cardparent.insertBefore(first,last.nextSibling)
+    console.log(length)
+}
+
+
 
 
 burgerbtn.addEventListener('click',AddRemoveCollapse)
 footer.addEventListener('click',Affclick)
 editcard1btn.addEventListener('click',function() { ChangeTextColor(card1Text,'red'); } )
 editcard2btn.addEventListener('click',function(){ SwitchTextColor(card2Text) })
-leftbtn.addEventListener('click',pushpop)
+rightbtn.addEventListener('click',rotatecards)
+leftbtn.addEventListener('click',function(event){event.preventDefault();rotatecardsinvrs() })
 navbar.addEventListener('dblclick',AddRemoveCDN)
