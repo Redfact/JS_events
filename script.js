@@ -8,9 +8,10 @@ let card2Text = document.querySelectorAll('p.card-text')[1]
 let editcard2btn = document.querySelectorAll("button.btn-outline-secondary")[1]
 let stylelink = document.querySelector("link")
 let navbar = document.querySelector(".navbar")
-            //Variables 
 
-//check if navbarheader has collapse
+
+
+            //Variables 
 let haveCollapse = navbarheader.classList.contains('collapse')
 let countclick=0
 let clickedEdit2= true
@@ -66,13 +67,23 @@ function AddRemoveCDN(){
 
 }
 
+let leftbtn = document.querySelector("a.btn-secondary")
+let cardparent = document.querySelector(".cards")
 
-
+console.log(leftbtn)
+function pushpop(){
+    let length= cardparent.childNodes.length
+    let first = cardparent.childNodes[1];
+    let last = cardparent.childNodes[length-2];
+    cardparent.insertBefore(last,first)
+    last=undefined
+    //console.log(list.childNodes)
+}
 
 
 burgerbtn.addEventListener('click',AddRemoveCollapse)
 footer.addEventListener('click',Affclick)
 editcard1btn.addEventListener('click',function() { ChangeTextColor(card1Text,'red'); } )
 editcard2btn.addEventListener('click',function(){ SwitchTextColor(card2Text) })
+leftbtn.addEventListener('click',pushpop)
 navbar.addEventListener('dblclick',AddRemoveCDN)
-            
